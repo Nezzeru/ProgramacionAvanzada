@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import maleta.Armas;
 import maleta.Maleta;
@@ -21,7 +23,15 @@ public class ui extends javax.swing.JFrame {
     maleta.Armas arma = new Armas(001, "Armas", 200);
     maleta.Medicina medicina = new Medicina(002, "Medicinas", 100);
     maleta.Objclaves objeto = new Objclaves(003, "Objetos", false);
+    ImageIcon gun = new ImageIcon("Resources/01.png");
 
+//    private void addGun(String name) {
+//    baseBaul.add(new JLabel(gun));
+//            
+//    
+//    }
+
+            
     /**
      * Creates new form ui
      */
@@ -38,8 +48,8 @@ public class ui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        baseBaul = new javax.swing.JPanel();
+        menu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         itemsToAdd = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
@@ -48,10 +58,9 @@ public class ui extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(620, 480));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.setLayout(new java.awt.GridLayout(4, 5));
+        baseBaul.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        baseBaul.setLayout(new java.awt.GridLayout(4, 5));
 
         jLabel1.setText("ALMACENAR");
 
@@ -71,36 +80,36 @@ public class ui extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
+        menu.setLayout(menuLayout);
+        menuLayout.setHorizontalGroup(
+            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuLayout.createSequentialGroup()
+                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(menuLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(menuLayout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(jSeparator2)
                                     .addComponent(itemsToRm, 0, 100, Short.MAX_VALUE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(menuLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(itemsToAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        menuLayout.setVerticalGroup(
+            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -113,7 +122,7 @@ public class ui extends javax.swing.JFrame {
                 .addComponent(itemsToRm, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,19 +131,20 @@ public class ui extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 432, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(baseBaul, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(baseBaul, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -145,6 +155,9 @@ public class ui extends javax.swing.JFrame {
             try {
                 baul.añadir(arma);
                 JOptionPane.showMessageDialog(null, "Se ha almacenado un arma", "¡ATENCION!", JOptionPane.INFORMATION_MESSAGE);
+                baseBaul.add(new JLabel("Arma"));
+                baseBaul.revalidate();
+                baseBaul.repaint();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No hay espacio disponible para almacenar", "¡ATENCION!", JOptionPane.WARNING_MESSAGE);
             }
@@ -152,7 +165,9 @@ public class ui extends javax.swing.JFrame {
             try {
                 baul.añadir(medicina);
                 JOptionPane.showMessageDialog(null, "Se ha almacenado una medicina", "¡ATENCION!", JOptionPane.INFORMATION_MESSAGE);
-
+                baseBaul.add(new JLabel("Medicina"));
+                baseBaul.revalidate();
+                baseBaul.repaint();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No hay espacio disponible para almacenar", "¡ATENCION!", JOptionPane.WARNING_MESSAGE);
 
@@ -162,7 +177,9 @@ public class ui extends javax.swing.JFrame {
             try {
                 baul.añadir(objeto);
                 JOptionPane.showMessageDialog(null, "Se ha almacenado un objeto importante", "¡ATENCION!", JOptionPane.INFORMATION_MESSAGE);
-
+                baseBaul.add(new JLabel("Objeto Importante"));
+                baseBaul.revalidate();
+                baseBaul.repaint();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No hay espacio disponible para almacenar", "¡ATENCION!", JOptionPane.WARNING_MESSAGE);
 
@@ -175,6 +192,7 @@ public class ui extends javax.swing.JFrame {
         if (itemsToRm.getSelectedItem().toString().equalsIgnoreCase(arma.getName())) {
             try {
                 baul.eliminar(arma.getId());
+                 baseBaul.add(new JLabel(gun));
                 JOptionPane.showMessageDialog(null, "Se ha eliminado un arma", "¡ATENCION!", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No se encontro ningun arma", "¡ATENCION!", JOptionPane.WARNING_MESSAGE);
@@ -240,13 +258,13 @@ public class ui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel baseBaul;
     private javax.swing.JComboBox itemsToAdd;
     private javax.swing.JComboBox itemsToRm;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JPanel menu;
     // End of variables declaration//GEN-END:variables
 }
