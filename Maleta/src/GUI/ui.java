@@ -51,6 +51,10 @@ public class ui extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
+    
+    private void rmGun() {
+        //baseBaul.removeMouseListener()
+    }
 
     /**
      * Creates new form ui
@@ -223,6 +227,7 @@ public class ui extends javax.swing.JFrame {
         else if (itemsToRm.getSelectedItem().toString().equalsIgnoreCase(medicina.getName())) {
             try {
                 baul.eliminar(medicina.getId());
+                rmGun();
                 JOptionPane.showMessageDialog(null, "Se ha eliminado una medicina", "¡ATENCION!", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No se encontro ninguna medicina", "¡ATENCION!", JOptionPane.WARNING_MESSAGE);
