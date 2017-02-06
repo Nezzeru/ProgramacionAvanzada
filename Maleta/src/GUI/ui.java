@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,15 +24,34 @@ public class ui extends javax.swing.JFrame {
     maleta.Armas arma = new Armas(001, "Armas", 200);
     maleta.Medicina medicina = new Medicina(002, "Medicinas", 100);
     maleta.Objclaves objeto = new Objclaves(003, "Objetos", false);
-    ImageIcon gun = new ImageIcon("Resources/01.png");
 
-//    private void addGun(String name) {
-//    baseBaul.add(new JLabel(gun));
-//            
-//    
-//    }
+    /**
+     * Agrega la imagen al label
+     */
+    private void addgun() {
+        JLabel textgun = new JLabel("");
+        textgun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/01.png")));
+        baseBaul.add(textgun);
+        revalidate();
+        repaint();
+    }
 
-            
+    private void addMedicina() {
+        JLabel heal = new JLabel("");
+        heal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/02.png")));
+        baseBaul.add(heal);
+        revalidate();
+        repaint();
+    }
+
+    private void addObj() {
+        JLabel obj = new JLabel("");
+        obj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/03.png")));
+        baseBaul.add(obj);
+        revalidate();
+        repaint();
+    }
+
     /**
      * Creates new form ui
      */
@@ -58,8 +78,11 @@ public class ui extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(640, 480));
+        setResizable(false);
 
-        baseBaul.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        baseBaul.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         baseBaul.setLayout(new java.awt.GridLayout(4, 5));
 
         jLabel1.setText("ALMACENAR");
@@ -131,7 +154,7 @@ public class ui extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(baseBaul, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(baseBaul, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -141,7 +164,7 @@ public class ui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(baseBaul, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(baseBaul, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -151,35 +174,32 @@ public class ui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemsToAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemsToAddActionPerformed
+        //Si el elemento seleccionado coincide con los creados se añade al inventario
         if (itemsToAdd.getSelectedItem().toString().equalsIgnoreCase(arma.getName())) {
             try {
                 baul.añadir(arma);
                 JOptionPane.showMessageDialog(null, "Se ha almacenado un arma", "¡ATENCION!", JOptionPane.INFORMATION_MESSAGE);
-                baseBaul.add(new JLabel("Arma"));
-                baseBaul.revalidate();
-                baseBaul.repaint();
+                addgun();
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No hay espacio disponible para almacenar", "¡ATENCION!", JOptionPane.WARNING_MESSAGE);
             }
+            //Si el elemento seleccionado coincide con los creados se añade al inventario
         } else if (itemsToAdd.getSelectedItem().toString().equalsIgnoreCase(medicina.getName())) {
             try {
                 baul.añadir(medicina);
                 JOptionPane.showMessageDialog(null, "Se ha almacenado una medicina", "¡ATENCION!", JOptionPane.INFORMATION_MESSAGE);
-                baseBaul.add(new JLabel("Medicina"));
-                baseBaul.revalidate();
-                baseBaul.repaint();
+                addMedicina();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No hay espacio disponible para almacenar", "¡ATENCION!", JOptionPane.WARNING_MESSAGE);
 
             }
-
+            //Si el elemento seleccionado coincide con los creados se añade al inventario
         } else if (itemsToAdd.getSelectedItem().toString().equalsIgnoreCase(objeto.getName())) {
             try {
                 baul.añadir(objeto);
                 JOptionPane.showMessageDialog(null, "Se ha almacenado un objeto importante", "¡ATENCION!", JOptionPane.INFORMATION_MESSAGE);
-                baseBaul.add(new JLabel("Objeto Importante"));
-                baseBaul.revalidate();
-                baseBaul.repaint();
+                addObj();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No hay espacio disponible para almacenar", "¡ATENCION!", JOptionPane.WARNING_MESSAGE);
 
@@ -189,17 +209,17 @@ public class ui extends javax.swing.JFrame {
     }//GEN-LAST:event_itemsToAddActionPerformed
 
     private void itemsToRmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemsToRmActionPerformed
+
+        //Si el nombre del elemento seleccionado conincide con el del inventario, se elimina
         if (itemsToRm.getSelectedItem().toString().equalsIgnoreCase(arma.getName())) {
             try {
                 baul.eliminar(arma.getId());
-                 baseBaul.add(new JLabel(gun));
                 JOptionPane.showMessageDialog(null, "Se ha eliminado un arma", "¡ATENCION!", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No se encontro ningun arma", "¡ATENCION!", JOptionPane.WARNING_MESSAGE);
             }
-            
-        }
-        
+
+        } //Si el nombre del elemento seleccionado conincide con el del inventario, se elimina
         else if (itemsToRm.getSelectedItem().toString().equalsIgnoreCase(medicina.getName())) {
             try {
                 baul.eliminar(medicina.getId());
@@ -207,10 +227,8 @@ public class ui extends javax.swing.JFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No se encontro ninguna medicina", "¡ATENCION!", JOptionPane.WARNING_MESSAGE);
             }
-            
-          
-            
-        }
+
+        } //Si el nombre del elemento seleccionado conincide con el del inventario, se elimina
         else if (itemsToRm.getSelectedItem().toString().equalsIgnoreCase(objeto.getName())) {
             try {
                 baul.eliminar(objeto.getId());
@@ -218,7 +236,7 @@ public class ui extends javax.swing.JFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No se encontro ningun objeto importante", "¡ATENCION!", JOptionPane.WARNING_MESSAGE);
             }
-            
+
         }
     }//GEN-LAST:event_itemsToRmActionPerformed
 
@@ -251,6 +269,7 @@ public class ui extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new ui().setVisible(true);
             }
