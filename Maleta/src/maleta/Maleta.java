@@ -79,8 +79,8 @@ public class Maleta {
 
             }
         }
-//        System.out.println("____________________________________________");
-//        consultar();
+ System.out.println("____________________________________________");
+ consultar();
         if (!flag) {
             throw new Exception("No hay espacio");
         }
